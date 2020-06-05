@@ -7,7 +7,7 @@ app.use(bp.json());
 app.use(cors());
 
 app.listen(process.env.PORT || 3001, ()=>{
-    console.log(`running on 3001`)
+    console.log(`running`)
 })
 
 app.get('/tweets', (req, res)=>{
