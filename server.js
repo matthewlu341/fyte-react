@@ -23,3 +23,7 @@ app.get('/tweets', (req, res)=>{
             res.status(200).json(data)
         })
 })
+
+app.get('/', (req, res) => {
+    res.status(200).json('root loaded')
+})
