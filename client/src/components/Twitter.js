@@ -19,7 +19,7 @@ export default class Twitter extends Component {
     }
 
     getTweets(){
-        return fetch('https://gentle-fjord-17627.herokuapp.com/tweets', {
+        return fetch('https://fyte-server.herokuapp.com/tweets', {
             method: 'get',
             headers: {'Accept': 'application/json'},
         })

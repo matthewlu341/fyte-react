@@ -15,7 +15,7 @@ class App extends React.Component{
     this.setRoute = this.setRoute.bind(this);
   }
   componentWillMount(){
-    fetch('https://gentle-fjord-17627.herokuapp.com', {
+    fetch('https://fyte-server.herokuapp.com/', {
             method: 'get',
             headers: {'Accept': 'application/json'},
         })
