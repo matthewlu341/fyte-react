@@ -57,14 +57,16 @@ export default class YouTube extends Component {
                     <iframe className='primary' title='0' width="560" height="315" src={this.state.videos[0]} frameBorder="0" allow="accelerometer; autoplay; 
                     encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     <div className='bottom'>
-                        <iframe title='1' width="280" height="157" src={this.state.videos[1]} frameBorder="0" allow="accelerometer; autoplay; 
-                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        <iframe title='2' width="280" height="157" src={this.state.videos[2]} frameBorder="0" allow="accelerometer; autoplay; 
-                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        <iframe title='3' width="280" height="157" src={this.state.videos[3]} frameBorder="0" allow="accelerometer; autoplay; 
-                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        <iframe title='4' width="280" height="157" src={this.state.videos[4]} frameBorder="0" allow="accelerometer; autoplay; 
-                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        {
+                            this.state.videos.map((video, index) => {
+                                if (index >= 1) {
+                                    return(
+                                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[index]} frameBorder="0" allow="accelerometer; autoplay; 
+                                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    )
+                               }
+                             })
+                        }
                     </div>
                 </div>
             </Animated>
