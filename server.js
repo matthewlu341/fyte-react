@@ -1,7 +1,7 @@
 let express = require('express'),
 bp = require('body-parser'),
 cors = require('cors'),
-const path = require('path');
+path = require('path');
 app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')));
