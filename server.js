@@ -3,6 +3,8 @@ bp = require('body-parser'),
 cors = require('cors'),
 app = express();
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.use(bp.json());
 app.use(cors());
 
