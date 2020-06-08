@@ -1,0 +1,27 @@
+.ig{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    row-gap: 60px;
+    margin-left: 8em;
+    margin-bottom: 3em;
+    
+}
+h6{
+    color:white;
+    width: 320;
+    height: auto;
+    float: left;
+    margin-right: 4em;
+}
+img, video{
+    box-shadow: 4px 4px 14px #000;
+    transition: transform .1s;
+    margin-bottom: 30px;
+}
+img:hover, video:hover{
+    transform: scale(1.1)
+}

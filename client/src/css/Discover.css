@@ -1,0 +1,13 @@
+html{
+    overflow-y: scroll;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    
+}
+.btn{
+    margin:2em;
+}
