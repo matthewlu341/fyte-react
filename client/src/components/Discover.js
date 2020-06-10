@@ -6,6 +6,7 @@ import Twitter from './Twitter.js'
 import Insta from './Insta.js'
 import GradientButton from 'react-linear-gradient-button';
 import '../css/Discover.css'
+import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 
 
 export default class Discover extends Component {
@@ -35,9 +36,9 @@ export default class Discover extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="buttons">
-                        <GradientButton padding={12} className="btn" theme = {"YouTube"}>YouTube</GradientButton>
-                        <GradientButton onClick = {this.switch.bind(this, 'twitter')} padding={12} className="btn" theme = {"Facebook Messenger"}>Twitter</GradientButton>
-                        <GradientButton onClick = {this.switch.bind(this, 'insta')} padding={12} className="btn" theme={"Sublime Vivid"}>Instagram</GradientButton>
+                        <GradientButton padding={12} className="btn" theme = {"YouTube"}><AiFillYoutube size='2em'></AiFillYoutube></GradientButton>
+                        <GradientButton onClick = {this.switch.bind(this, 'twitter')} padding={12} className="btn" theme = {"Facebook Messenger"}><AiFillTwitterCircle size='2em'></AiFillTwitterCircle></GradientButton>
+                        <GradientButton onClick = {this.switch.bind(this, 'insta')} padding={12} className="btn" theme={"Sublime Vivid"}><AiFillInstagram size='2em'></AiFillInstagram></GradientButton>
                     </div>
                     <YouTube></YouTube>
                 </div>
@@ -57,9 +58,9 @@ export default class Discover extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="buttons">
-                        <GradientButton  onClick = {this.switch.bind(this, 'youtube')} padding={12} className="btn" theme = {"YouTube"}>YouTube</GradientButton>
-                        <GradientButton padding={12} className="btn" theme = {"Facebook Messenger"}>Twitter</GradientButton>
-                        <GradientButton  onClick = {this.switch.bind(this, 'insta')} padding={12} className="btn" theme={"Sublime Vivid"}>Instagram</GradientButton>
+                    <GradientButton onClick = {this.switch.bind(this, 'youtube')} padding={12} className="btn" theme = {"YouTube"}><AiFillYoutube size='2em'></AiFillYoutube></GradientButton>
+                        <GradientButton padding={12} className="btn" theme = {"Facebook Messenger"}><AiFillTwitterCircle size='2em'></AiFillTwitterCircle></GradientButton>
+                        <GradientButton onClick = {this.switch.bind(this, 'insta')} padding={12} className="btn" theme={"Sublime Vivid"}><AiFillInstagram size='2em'></AiFillInstagram></GradientButton>
                     </div>
                     <Twitter></Twitter>
                 </div>
@@ -79,9 +80,9 @@ export default class Discover extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="buttons">
-                        <GradientButton onClick = {this.switch.bind(this, 'youtube')} padding={12} className="btn" theme = {"YouTube"}>YouTube</GradientButton>
-                        <GradientButton onClick = {this.switch.bind(this, 'twitter')} padding={12} className="btn" theme = {"Facebook Messenger"}>Twitter</GradientButton>
-                        <GradientButton padding={12} className="btn" theme={"Sublime Vivid"}>Instagram</GradientButton>
+                    <GradientButton onClick = {this.switch.bind(this, 'youtube')} padding={12} className="btn" theme = {"YouTube"}><AiFillYoutube size='2em'></AiFillYoutube></GradientButton>
+                        <GradientButton onClick = {this.switch.bind(this, 'twitter')} padding={12} className="btn" theme = {"Facebook Messenger"}><AiFillTwitterCircle size='2em'></AiFillTwitterCircle></GradientButton>
+                        <GradientButton padding={12} className="btn" theme={"Sublime Vivid"}><AiFillInstagram size='2em'></AiFillInstagram></GradientButton>
                     </div>
                     <Insta></Insta>
                 </div>

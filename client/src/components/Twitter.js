@@ -4,6 +4,7 @@ import '../css/Twitter.css'
 import {Animated} from "react-animated-css";
 
 
+
 export default class Twitter extends Component {
     constructor(props){
         super(props);

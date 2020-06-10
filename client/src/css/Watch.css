@@ -1,3 +1,17 @@
 h1, h3{
     color: white;
 }
+.streams{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    row-gap: 30px;
+    margin-bottom: 3em;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}

@@ -3,6 +3,7 @@ import '../css/Insta.css'
 import { InstagramMedia } from 'react-instagram-media'
 import {Animated} from "react-animated-css";
 
+
 export default class Instagram extends Component {
     constructor(props){
         super(props);
