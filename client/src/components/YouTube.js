@@ -54,20 +54,18 @@ export default class YouTube extends Component {
         return (
             <Animated animationIn='fadeInLeft'>
                 <div class='videos'>
-                    <iframe className='primary' title='0' width="560" height="315" src={this.state.videos[0]} frameBorder="0" allow="accelerometer; autoplay; 
-                    encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                    <div className='bottom'>
-                        {
-                            this.state.videos.map((video, index) => {
-                                if (index >= 1) {
-                                    return(
-                                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[index]} frameBorder="0" allow="accelerometer; autoplay; 
-                                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    )
-                               }
-                             })
-                        }
-                    </div>
+                        <iframe className='primary' title='0' width="560" height="315" src={this.state.videos[0]} frameBorder="0" allow="accelerometer; autoplay; 
+                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <div className='bottom'>
+                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[1]} frameBorder="0" allow="accelerometer; autoplay; 
+                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[2]} frameBorder="0" allow="accelerometer; autoplay; 
+                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[3]} frameBorder="0" allow="accelerometer; autoplay; 
+                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <iframe className='primary' title='0' width="315" height="auto" src={this.state.videos[4]} frameBorder="0" allow="accelerometer; autoplay; 
+                        encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        </div>
                 </div>
             </Animated>
         )
