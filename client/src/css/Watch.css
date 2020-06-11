@@ -23,13 +23,13 @@ h1, h3{
     align-items: center;
     flex-direction: row;
 }
-a{
+a.streamA{
     padding: 1.05em;
     text-decoration: none;
     color: #212428;
     transition: 0.2s;
 }
-a:hover{
+a.streamA:hover{
     text-decoration: none;
     background-color: rgb(19, 24, 24);
     color: white;

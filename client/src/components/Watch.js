@@ -104,7 +104,7 @@ class Watch extends Component {
                                 <Card
                                     bg={'light'}
                                     style={{ width: '18rem' }}>
-                                    <Card.Header className='cardContent'><a rel="noopener noreferrer" target="_blank" href={stream.link}>{stream.name} </a> 
+                                    <Card.Header className='cardContent'><a className='streamA' rel="noopener noreferrer" target="_blank" href={stream.link}>{stream.name} </a> 
                                     {this.isHD(stream.res)? <MdHighQuality size='2em'></MdHighQuality> : <div></div>}
                                     {stream.comp.includes('iOS')? <AiFillApple ></AiFillApple> : <div></div>}
                                     {stream.comp.includes('Android')? <AiFillAndroid ></AiFillAndroid> : <div></div>}
