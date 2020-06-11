@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import '../css/Insta.css'
 import { InstagramMedia } from 'react-instagram-media'
 import {Animated} from "react-animated-css";
-
+import Spinner from 'react-bootstrap/Spinner'
 
 export default class Instagram extends Component {
     constructor(props){
         super(props);
         this.state={
-            pics: []
+            pics: [],
+            loading: true
         }
         this.getPics = this.getPics.bind(this)
     }
     async componentWillMount(){
         let data = await this.getPics(),
         pics = data.posts;
-        this.setState({pics: pics});
-        console.log(this.state)
+        this.setState({pics: pics, loading:false});
     }
     getPics(){
         const userInstagram = require("user-instagram");
@@ -27,6 +27,10 @@ export default class Instagram extends Component {
     }
     render() {
         return (
+            <div>
+                <div className='load'>
+                    <>{this.state.loading ? <Spinner animation="border" role="status" variant='light'></Spinner> : <div></div>}</>
+                </div>
                 <div className='ig'>
                     {
                         this.state.pics.map((pic) => {
@@ -63,6 +67,7 @@ export default class Instagram extends Component {
                                 /> 
                         })
                     }       
+                </div>
                 </div>
         )
     }

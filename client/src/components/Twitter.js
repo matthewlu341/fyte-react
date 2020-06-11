@@ -2,21 +2,20 @@ import React, { Component } from 'react'
 import { Tweet } from 'react-twitter-widgets'
 import '../css/Twitter.css'
 import {Animated} from "react-animated-css";
-
-
+import Spinner from 'react-bootstrap/Spinner'
 
 export default class Twitter extends Component {
     constructor(props){
         super(props);
         this.state={
-            tweets: []
+            tweets: [],
+            loading: true
         }
         this.getTweets = this.getTweets.bind(this);
     }
     async componentWillMount(){
         let tweets = await this.getTweets();
-        this.setState({tweets: tweets})
-        console.log(this.state)
+        this.setState({tweets: tweets, loading:false})
     }
 
     getTweets(){
@@ -30,17 +29,18 @@ export default class Twitter extends Component {
     }
 
     render() {
-        return (
-            <div className="tweets">
-                {this.state.tweets.map((tweet) => {
-                    return(
-                    <Animated animationIn="fadeInLeftBig">
-                        <Tweet tweetId={tweet.id_str}></Tweet>
-                    </Animated>
-                    )
-                })}  
+        return <div className="tweets">
+            {this.state.loading ? <Spinner animation="border" role="status" variant='light'></Spinner> : <div></div>}
+            {this.state.tweets.map((tweet) => {
+                return(
+                <Animated animationIn="fadeInLeftBig">
+                    <Tweet tweetId={tweet.id_str}></Tweet>
+                </Animated>
+                )
+            })}  
             </div>
             
-        )
+            
+        
     }
 }

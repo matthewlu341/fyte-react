@@ -9,6 +9,7 @@ import '../css/Discover.css'
 import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 
 
+
 export default class Discover extends Component {
     constructor(props){
         super(props);
