@@ -25,4 +25,29 @@ iframe{
     display: flex;
     justify-content: center;
 }
+h2{
+    color: white
+}
 
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 5%;               
+    background-color:#ffffff;
+    height: 1px;
+    margin-bottom: 2em;
+  }
+a, a:hover{
+    text-decoration: none;
+    transition: 0.2s
+}
+a:hover{
+    transform: scale(1.1)
+}
+.secondary{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+}
