@@ -19,15 +19,7 @@ export default class YouTube extends Component {
     }
 
     componentDidMount(){   
-        gapi.load("client:auth2", function() {
-            gapi.auth2.init({client_id: "199095257382-1u0md22q8iac7qb53fmpn1dpoapu379k.apps.googleusercontent.com"});
-            }); 
-        this.loadClient().then(this.execute).then((array) => {
-            for (let i=0; i < array.length; i++){
-                array[i] = `https://www.youtube.com/embed/${array[i]}`;
-            }
-            this.setState({videos: array, loading: false})
-        });        
+        /* Fetch from the youtube server side now. */     
     }
 
     swap(i1,i2){
@@ -38,31 +30,6 @@ export default class YouTube extends Component {
         tempVids[i2] = link1;
         this.setState({videos: tempVids, loading: false})
 
-    }
-
-    loadClient(){
-        gapi.client.setApiKey("AIzaSyAcjzKG1wnMMZgESYzlQlln7pb3QiAHdnI");
-        return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
-        function(err) { console.error("Error loading GAPI client for API", err); });
-    }
-
-    execute(){
-        return gapi.client.youtube.playlistItems.list({
-            "part": [
-                "snippet"
-            ],
-            "playlistId": "UUvgfXK4nTYKudb0rFR6noLA"
-            })
-                .then(function(response, array=[]) {
-                        let videos = response.result.items;
-                        for (let video of videos){
-                            let id = video.snippet.resourceId.videoId;
-                            array.push(id)
-                        }
-                        return array;
-                    },
-                    function(err) { console.error("Execute error", err);});
     }
 
     render() {

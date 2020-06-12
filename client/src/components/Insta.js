@@ -3,6 +3,10 @@ import '../css/Insta.css'
 import { InstagramMedia } from 'react-instagram-media'
 import {Animated} from "react-animated-css";
 import Spinner from 'react-bootstrap/Spinner'
+import { AiFillHeart } from "react-icons/ai";
+import { MdDateRange } from "react-icons/md";
+import { FiExternalLink } from "react-icons/fi";
+
 
 export default class Instagram extends Component {
     constructor(props){
@@ -16,7 +20,7 @@ export default class Instagram extends Component {
     async componentWillMount(){
         let data = await this.getPics(),
         pics = data.posts;
-        this.setState({pics: pics, loading:false});
+        this.setState({pics: pics, loading:false})
     }
     getPics(){
         const userInstagram = require("user-instagram");
@@ -47,6 +51,25 @@ export default class Instagram extends Component {
                                                     <source src={video_url} type="video/mp4" />
                                                 </video>
                                                 <h6>{pic.caption}</h6>
+                                                <div className= 'info'>
+                                                    <div className = 'iconGroup'>
+                                                        <div className='icon' style = {{color: 'white'}}>
+                                                                <AiFillHeart />
+                                                            </div>
+                                                        <h6>{pic.likesCount}</h6>
+                                                    </div>
+                                                    <div className='iconGroup'>
+                                                        <div className='icon' style = {{color: 'white'}}>
+                                                                <MdDateRange />
+                                                        </div>
+                                                        <h6>{new Date(pic.timestamp*1000).toLocaleDateString("en-US")} @ {new Date(pic.timestamp*1000).toLocaleTimeString("en-US")}</h6>
+                                                    </div>
+                                                    <a rel="noopener noreferrer" target='_blank' href={pic.url}>
+                                                    <div style = {{color: 'white'}}>
+                                                            <FiExternalLink />
+                                                    </div>
+                                                </a>
+                                                </div>
                                             </Animated>
                                         </div>
                                         )
@@ -54,11 +77,27 @@ export default class Instagram extends Component {
                                     return (
                                         <div className='post'>
                                             <Animated animationIn='fadeInLeft'>
-                                                <img width="320" height="auto"
-                                                src={display_url}
-                                                alt={caption}
-                                                />
+                                                <img width="320" height="auto" src={display_url} alt={caption}/>
                                                 <h6>{pic.caption}</h6>
+                                                <div className= 'info'>
+                                                    <div className = 'iconGroup'>
+                                                        <div className='icon' style  = {{color: 'white'}}>
+                                                                <AiFillHeart />
+                                                            </div>
+                                                        <h6>{pic.likesCount}</h6>
+                                                    </div>
+                                                    <div className='iconGroup'>
+                                                        <div className='icon' style = {{color: 'white'}}>
+                                                                <MdDateRange />
+                                                        </div>
+                                                        <h6>{new Date(pic.timestamp*1000).toLocaleDateString("en-US")} @ {new Date(pic.timestamp*1000).toLocaleTimeString("en-US")}</h6>
+                                                    </div>
+                                                    <a rel="noopener noreferrer" target='_blank' href={pic.url}>
+                                                    <div style = {{color: 'white'}}>
+                                                            <FiExternalLink />
+                                                    </div>
+                                                </a>
+                                                </div>
                                             </Animated>
                                         </div>
                                     )

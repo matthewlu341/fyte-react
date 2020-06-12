@@ -11,11 +11,13 @@
     
 }
 h6{
+    position: relative;
+    top: 6px;
     color:white;
     width: 320;
     height: auto;
     float: left;
-    margin-right: 4em;
+    margin-right: 1.1em;
 }
 img, video{
     box-shadow: 4px 4px 14px #000;
@@ -25,8 +27,26 @@ img, video{
 img:hover, video:hover{
     transform: scale(1.1)
 }
-.load{
+.load, .iconGroup, .info{
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-items: center;
+    align-content: center;
+    flex-direction: row;
 }
+.icon{
+    margin-right: 6px;
+}
+.info{
+    float: left;
+}
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 5%;               
+    background-color:#ffffff;
+    height: 1px;
+    margin-bottom: 2em;
+  }
