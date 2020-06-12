@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { gapi } from 'gapi-script';
 import '../css/YouTube.css'
 import {Animated} from "react-animated-css";
 import Spinner from 'react-bootstrap/Spinner'
@@ -13,13 +12,18 @@ export default class YouTube extends Component {
             videos: [],
             loading: true
         };
-        this.loadClient = this.loadClient.bind(this);
-        this.execute = this.execute.bind(this);
         this.swap = this.swap.bind(this)
     }
 
-    componentDidMount(){   
-        /* Fetch from the youtube server side now. */     
+    async componentDidMount(){  
+        let data = await fetch("https://fyte-server.herokuapp.com/youtube"),
+        vids = await data.json(),
+        retVids = [];
+        for (let vid of vids){
+            retVids.push(`https://www.youtube.com/embed/${vid.snippet.resourceId.videoId}`)
+            console.log(vid)
+        }
+        this.setState({videos:retVids, loading:false})
     }
 
     swap(i1,i2){
