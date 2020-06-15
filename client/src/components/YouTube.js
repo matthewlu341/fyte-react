@@ -21,7 +21,6 @@ export default class YouTube extends Component {
         retVids = [];
         for (let vid of vids){
             retVids.push(`https://www.youtube.com/embed/${vid.snippet.resourceId.videoId}`)
-            console.log(vid)
         }
         this.setState({videos:retVids, loading:false})
     }

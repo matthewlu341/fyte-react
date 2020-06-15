@@ -89,7 +89,7 @@ class Watch extends Component {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={this.sortStreams.bind(this, 'res')} href="#res">Resolution</Dropdown.Item>
+                                <Dropdown.Item className='option' onClick={this.sortStreams.bind(this, 'res')} href="#res">Resolution</Dropdown.Item>
                                 <Dropdown.Item onClick={this.sortStreams.bind(this, 'fps')} href="#fps">FPS</Dropdown.Item>
                                 <Dropdown.Item onClick={this.sortStreams.bind(this, 'btr')} href="#/btr">Bitrate</Dropdown.Item>
                                 <Dropdown.Item onClick={this.sortStreams.bind(this, 'ads')} href="#/ads">Ads</Dropdown.Item>
