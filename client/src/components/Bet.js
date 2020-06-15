@@ -14,19 +14,7 @@ export default class Bet extends Component {
         this.clicked = this.clicked.bind(this)
     }
     clicked(arg){
-        switch(arg){
-            case 'back':
-                this.setState({show: 'signIn'})
-                break;
-            case 'signIn':
-                this.setState({show:'signedIn'})
-                break;
-            case 'signUp':
-                this.setState({show: 'signUp'})
-                break;
-            default: break;
-        }
-
+        this.setState({show: arg})
     }
     render() {
         return (
@@ -43,9 +31,9 @@ export default class Bet extends Component {
                     </Navbar.Collapse>
                 </Navbar>
                 {
-                    (this.state.show==='signedIn' ? <h1>Signed In</h1> : 
-                    (this.state.show==='signIn'? <SignIn onSignIn = {this.clicked.bind(this, 'signIn')} onSignUp = {this.clicked.bind(this, 'signUp')}></SignIn>
-                    :<SignUp onSignUp = {this.clicked.bind(this, 'signIn')} onSignIn = {this.clicked.bind(this, 'back')}></SignUp>))
+                    (this.state.show ==='signedIn' ? <h1>Signed In</h1> : 
+                    (this.state.show ==='signIn'? <SignIn onRouteChange = {this.clicked}></SignIn>
+                    :<SignUp onRouteChange = {this.clicked}></SignUp>))
                 }
             </div>
         )
