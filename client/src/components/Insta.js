@@ -53,13 +53,13 @@ export default class Instagram extends Component {
                                                 <h6>{pic.caption}</h6>
                                                 <div className= 'info'>
                                                     <div className = 'iconGroup'>
-                                                        <div className='icon' style = {{color: 'white'}}>
+                                                        <div className='icon' style = {{color: '#db2414'}}>
                                                                 <AiFillHeart />
                                                             </div>
                                                         <h6>{pic.likesCount}</h6>
                                                     </div>
                                                     <div className='iconGroup'>
-                                                        <div className='icon' style = {{color: 'white'}}>
+                                                        <div className='icon' style = {{color: '#07b3f7'}}>
                                                                 <MdDateRange />
                                                         </div>
                                                         <h6>{new Date(pic.timestamp*1000).toLocaleDateString("en-US")} @ {new Date(pic.timestamp*1000).toLocaleTimeString("en-US")}</h6>
@@ -81,13 +81,13 @@ export default class Instagram extends Component {
                                                 <h6>{pic.caption}</h6>
                                                 <div className= 'info'>
                                                     <div className = 'iconGroup'>
-                                                        <div className='icon' style  = {{color: 'white'}}>
+                                                        <div className='icon' style  = {{color: '#db2414'}}>
                                                                 <AiFillHeart />
                                                             </div>
                                                         <h6>{pic.likesCount}</h6>
                                                     </div>
                                                     <div className='iconGroup'>
-                                                        <div className='icon' style = {{color: 'white'}}>
+                                                        <div className='icon' style = {{color: '#07b3f7'}}>
                                                                 <MdDateRange />
                                                         </div>
                                                         <h6>{new Date(pic.timestamp*1000).toLocaleDateString("en-US")} @ {new Date(pic.timestamp*1000).toLocaleTimeString("en-US")}</h6>

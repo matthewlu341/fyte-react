@@ -62,27 +62,35 @@ class Watch extends Component {
         }
     }
 
-    async componentWillMount(){
-        let response = await fetch('https://fyte-server.herokuapp.com/streams');
-        let streams = await response.json();
-        this.setState({streams: streams, loading: false})
-
+    componentWillMount(){
+        fetch('http://localhost:3001/streams')
+            .then(response=>response.json())
+            .then(streams => {
+                if (streams!=='none'){
+                    this.setState({streams:streams})
+                }
+                this.setState({loading:false})
+            })
     }
+
     render() {
-        return (
-            <div>
-                <Navbar bg="light" expand="lg">
-                        <Navbar.Brand className='brand' href="">FYTE</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="mr-auto">
-                            <Nav.Link active href="">Watch</Nav.Link>
-                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'bet')}>Bet</Nav.Link>
-                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'discover')}>Discover</Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
-                <div className='container'>
+        return(
+               <div>
+                    <Navbar bg="light" expand="lg">
+            <Navbar.Brand className='brand' href="">FYTE</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                <Nav.Link active href="">Watch</Nav.Link>
+                <Nav.Link href="" onClick={this.props.setRoute.bind(this,'bet')}>Bet</Nav.Link>
+                <Nav.Link href="" onClick={this.props.setRoute.bind(this,'discover')}>Discover</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+    </Navbar>
+                    {
+                    (this.state.streams.length===0 ? <h1>Nothing here</h1> : 
+                    <div>
+                    <div className='container'>
                     <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 Sort by
@@ -128,7 +136,9 @@ class Watch extends Component {
                         })
                     }
                 </div>
-            </div>
+            </div>)
+                    }
+                </div>
         )
     }
 }

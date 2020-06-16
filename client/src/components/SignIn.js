@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import '../css/Bet.css'
 import '../css/TachyonsLogin.css'
+import '../css/Bet.css'
+import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 
 export default class SignIn extends Component {
     constructor(props){
         super(props)
         this.state = {
             user: '',
-            pass: ''
+            pass: '',
+            error: '',
         }
         this.onUserChange = this.onUserChange.bind(this);
         this.onPassChange = this.onPassChange.bind(this);
-        this.load = this.load.bind(this);
-        this.signUp = this.signUp.bind(this);
+        this.load = this.load.bind(this)
     }
     onUserChange(event){
         this.setState({user: event.target.value})
@@ -20,16 +22,27 @@ export default class SignIn extends Component {
     onPassChange(event){
         this.setState({pass: event.target.value})
     }
-    load(){
-        this.props.onRouteChange('signedIn')
-    }
-    signUp(){
-        this.props.onRouteChange('signUp')
+    async load(){
+        let response = await fetch('http://localhost:3001/signin', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({user: this.state.user, pass: this.state.pass})
+        })
+        let data = await response.json();
+        if(data==='loggedIn'){
+            this.props.onRouteChange('signedIn')
+        }
+        if (data==='wrongPw'){
+            this.setState({error: 'Incorrect password'})
+        }
+        if (data==='user not found'){
+            this.setState({error: 'Username not found'})
+        }
     }
 
     render() {
         return (
-            <div>
+            <div className='formContent'>
                 <form class="measure center">
                     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
                     <legend class="f4 fw6 ph0 mh0">Sign In to Bet</legend>
@@ -43,12 +56,15 @@ export default class SignIn extends Component {
                     </div>
                     </fieldset>
                     <div class="">
-                    <input onClick = {this.load} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+                    <Button onClick={this.load} variant="outline-light">Sign In</Button>{'Sign In'}
                     </div>
                     <div class="lh-copy mt3">
-                    <a onClick = {this.signUp} href="#0" class="f6 link dim black db">Sign up</a>
+                    <a onClick = {this.props.onRouteChange.bind(this,'signUp')} href="#0" class="f6 link dim black db">Sign up</a>
                     </div>
                 </form>
+                {
+                    (this.state.error ? <Alert variant = {"danger"}>{this.state.error}.</Alert> : <div></div>)
+                }
             </div>
         )
     }

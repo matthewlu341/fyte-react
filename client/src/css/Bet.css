@@ -1,3 +1,20 @@
 form.measure.center{
     margin-top: 2em;
+    margin-bottom: 2em;
 }
+input:focus{
+    outline: none
+}
+.alert-danger{
+    width: 30%;
+}
+.formContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.btn.btn-outline-light{
+    margin: 0
+}
+
