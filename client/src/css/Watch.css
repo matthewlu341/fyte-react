@@ -11,7 +11,7 @@ h1, h3{
     row-gap: 30px;
     margin-bottom: 3em;
 }
-.container{
+.container, .spinnerWrap, .noContent{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,4 +35,10 @@ h1, h3{
     text-decoration: none;
     background-color: rgb(19, 24, 24);
     color: white;
+}
+.noContent, .spinnerWrap{
+    margin-top: 2em;
+}
+.noStream{
+    margin-bottom: 1.1em;
 }

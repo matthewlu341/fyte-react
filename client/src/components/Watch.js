@@ -19,6 +19,7 @@ class Watch extends Component {
         }
         this.sortStreams = this.sortStreams.bind(this);
         this.isHD = this.isHD.bind(this);
+        this.subLoad = this.subLoad.bind(this);
     }
 
     isHD(res){
@@ -62,8 +63,29 @@ class Watch extends Component {
         }
     }
 
+    subLoad(groupNo){
+        this.setState({streams:[], loading:true})
+        fetch('https://fyte-server.herokuapp.com/streams', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({groupNo:groupNo})
+        })
+            .then(response=>response.json())
+            .then(streams => {
+                if (streams!=='none'){
+                    this.setState({streams:streams})
+                }
+                this.setState({loading:false})
+            })
+
+    }
+
     componentWillMount(){
-        fetch('http://localhost:3001/streams')
+        fetch('https://fyte-server.herokuapp.com/streams', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({groupNo:4})
+        })
             .then(response=>response.json())
             .then(streams => {
                 if (streams!=='none'){
@@ -88,7 +110,16 @@ class Watch extends Component {
             </Navbar.Collapse>
     </Navbar>
                     {
-                    (this.state.streams.length===0 ? <h1>Nothing here</h1> : 
+                    (this.state.streams.length===0 && this.state.loading ? <div className='spinnerWrap'><Spinner variant='light' animation='grow'></Spinner></div> :  //No streams AND its still loading
+                    (this.state.streams.length===0 && !this.state.loading ? 
+                    <div className='noContent'>
+                        <h1 className='noStream'>No streams available! <span aria-label="angry" role="img">😡</span></h1>
+                        <img alt='angry' src="https://media.giphy.com/media/jI3EBNa1aKSaIpH2PB/giphy.gif"></img>
+                        <h2>Check back on <a target='_blank' rel="noopener noreferrer" href='https://www.ufc.com/events'>fight day</a>.
+                        Or see how this tab works with <a onClick={this.subLoad.bind(this,19)} href='#0'>NBA streams.</a>
+                        </h2>
+                    </div>
+                    : //No streams and done loading, otherwise there are streams and done loading
                     <div>
                     <div className='container'>
                     <Dropdown>
@@ -137,6 +168,7 @@ class Watch extends Component {
                     }
                 </div>
             </div>)
+                    )
                     }
                 </div>
         )
