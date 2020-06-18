@@ -84,7 +84,7 @@ class Watch extends Component {
         fetch('https://fyte-server.herokuapp.com/streams', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({groupNo:1})
+            body: JSON.stringify({groupNo:4})
         })
             .then(response=>response.json())
             .then(streams => {
@@ -116,7 +116,7 @@ class Watch extends Component {
                         <h1 className='noStream'>No streams available! <span aria-label="angry" role="img">😡</span></h1>
                         <img alt='angry' src="https://media.giphy.com/media/jI3EBNa1aKSaIpH2PB/giphy.gif"></img>
                         <h2>Check back on <a target='_blank' rel="noopener noreferrer" href='https://www.ufc.com/events'>fight day</a>.
-                        Or see how this tab works with <a onClick={this.subLoad.bind(this,19)} href='#0'>NFL streams.</a>
+                        Or see how this tab works with <a onClick={this.subLoad.bind(this,1)} href='#0'>NFL streams.</a>
                         </h2>
                     </div>
                     : //No streams and done loading, otherwise there are streams and done loading
