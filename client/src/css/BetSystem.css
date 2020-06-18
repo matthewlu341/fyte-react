@@ -1,0 +1,12 @@
+.fight{
+    width: 100vh;
+    display: inline-block;
+    margin: 1.1em
+}
+.betContainer{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

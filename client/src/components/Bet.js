@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import SignIn  from "./SignIn.js"
 import SignUp  from "./SignUp.js"
+import BetSystem from './BetSystem.js'
 
 
 export default class Bet extends Component {
@@ -31,7 +32,9 @@ export default class Bet extends Component {
                     </Navbar.Collapse>
                 </Navbar>
                 {
-                    (this.state.show ==='signedIn' ? <h1>Signed In</h1> : 
+                    (this.state.show ==='signedIn' ? 
+                    <BetSystem></BetSystem>
+                    : 
                     (this.state.show ==='signIn'? <SignIn onRouteChange = {this.clicked}></SignIn>
                     :<SignUp onRouteChange = {this.clicked}></SignUp>))
                 }
