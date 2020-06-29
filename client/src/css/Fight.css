@@ -1,0 +1,9 @@
+h2{
+    display:inline;
+}
+.spacer{
+    margin-bottom: 1.5em;
+}
+.fighter:hover{
+    cursor: pointer;
+}

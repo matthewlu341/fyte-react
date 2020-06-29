@@ -31,7 +31,7 @@ export default class SignUp extends Component {
             })
             let data = await response.json();
             if(data.rowCount===1){
-                this.props.onRouteChange('signedIn');
+                this.props.onRouteChange('signedIn', this.state.user);
             } else{
                 this.setState({error: 'Username already taken'})
             }

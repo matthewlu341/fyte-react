@@ -30,7 +30,7 @@ export default class SignIn extends Component {
         })
         let data = await response.json();
         if(data==='loggedIn'){
-            this.props.onRouteChange('signedIn')
+            this.props.onRouteChange('signedIn', this.state.user)
         }
         if (data==='wrongPw'){
             this.setState({error: 'Incorrect password'})

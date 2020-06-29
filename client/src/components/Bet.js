@@ -10,12 +10,13 @@ export default class Bet extends Component {
     constructor(props){
         super(props);
         this.state = {
-            show: 'signIn'
+            show: 'signIn',
+            user: ''
         }
         this.clicked = this.clicked.bind(this)
     }
-    clicked(arg){
-        this.setState({show: arg})
+    clicked(arg, user){
+        this.setState({show: arg, user:user})
     }
     render() {
         return (
@@ -33,7 +34,7 @@ export default class Bet extends Component {
                 </Navbar>
                 {
                     (this.state.show ==='signedIn' ? 
-                    <BetSystem></BetSystem>
+                    <BetSystem user={this.state.user}></BetSystem>
                     : 
                     (this.state.show ==='signIn'? <SignIn onRouteChange = {this.clicked}></SignIn>
                     :<SignUp onRouteChange = {this.clicked}></SignUp>))
