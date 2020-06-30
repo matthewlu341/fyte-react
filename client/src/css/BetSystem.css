@@ -20,3 +20,10 @@
     margin-bottom: 1.1em;
     padding: 0;
 }
+#eventPic{
+    margin-bottom: 0;
+}
+
+.modal-open[style] {
+    padding-right: 0px !important;
+    }

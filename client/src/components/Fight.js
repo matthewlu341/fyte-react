@@ -17,18 +17,20 @@ export default class Fight extends Component {
     }
     changeColor(color){ //initial state
         if(this.state[color]==='white'){
-            this.setState({[color]:'green'})
+            this.setState({[color]:'#28a745'})
         } else{
             this.setState({[color]:'white'})
         } 
     }
     changeColorAfterSelect(color){ 
-        this.setState({[color]: "green"})
+        this.setState({[color]: "#28a745"})
     }
-    setSelected(selected, notSelected, notSelectedColor){
+    setSelected(selected, notSelected, notSelectedColor, index, fighter){
         if(this.state[selected]){
+            this.props.selectFunction(fighter,index, true)
             this.setState({[selected]:false})
         } else{
+            this.props.selectFunction(fighter,index, false)
             this.setState({[selected]:true, [notSelected]:false, [notSelectedColor]: "white"})
         }
     }
@@ -36,12 +38,12 @@ export default class Fight extends Component {
         return (
             <div>
                 <h2 className='line'>
-                    <h2 onClick={this.setSelected.bind(this, 'f1selected', 'f2selected', 'f2color')} 
+                    <h2 onClick={this.setSelected.bind(this, 'f1selected', 'f2selected', 'f2color', this.props.index, this.props.name1)} 
                     onMouseEnter={this.state.f1selected ? this.changeColorAfterSelect.bind(this, 'f1color') : this.changeColor.bind(this, 'f1color')} 
                     onMouseLeave={this.state.f1selected ? this.changeColorAfterSelect.bind(this, 'f1color') : this.changeColor.bind(this, 'f1color')}
                     style={{color: this.state.f1color}} 
                     className='fighter'>{this.props.name1}</h2> vs <h2 
-                    onClick={this.setSelected.bind(this, 'f2selected', 'f1selected', 'f1color')} 
+                    onClick={this.setSelected.bind(this, 'f2selected', 'f1selected', 'f1color', this.props.index, this.props.name2)} 
                     onMouseEnter={this.state.f2selected ? this.changeColorAfterSelect.bind(this, 'f2color') : this.changeColor.bind(this, 'f2color')}
                     onMouseLeave={this.state.f2selected ? this.changeColorAfterSelect.bind(this, 'f2color') : this.changeColor.bind(this, 'f2color')}
                     style={{color: this.state.f2color}} 
