@@ -7,3 +7,14 @@ h2{
 .fighter:hover{
     cursor: pointer;
 }
+#leftFighter{
+    float: left;
+}
+#rightFighter{
+    float: right;
+}
+.line{
+    width: 100vh;
+    display: inline-block;
+
+}

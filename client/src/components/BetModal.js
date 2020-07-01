@@ -5,8 +5,16 @@ import '../css/BetModal.css'
 
 const BetModal = (props) => {
     const [show, setShow] = React.useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleClose = () => { //When Bet is clicked
+        fetch('http://localhost:3001/placebets', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({eventName: props.eventName, picks: props.picks.filter(element=>element), user:props.user})
+        })
+        setShow(false)
+    };
     return (
         <>
         <Button onClick={handleShow} size='lg' variant="success">Bet</Button>

@@ -5,6 +5,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import Fight from './Fight'
 import {Animated} from "react-animated-css";
 import BetModal from './BetModal'
+import {Checkmark} from 'react-checkmark';
 
 export default class BetSystem extends Component {
     constructor(props){
@@ -15,18 +16,26 @@ export default class BetSystem extends Component {
             selectedFighters: [],
             picture: '',
             loading: true,
-            modalOn: false
+            modalOn: false,
+            hasBet: null,
+            picks: []
         }
         this.setSelectedList = this.setSelectedList.bind(this);
         this.isSelectedEmpty = this.isSelectedEmpty.bind(this);
-        this.showModal=this.showModal.bind(this);
+        this.showModal=this.showModal.bind(this);   
     }
     componentWillMount(){
-        fetch("https://fyte-server.herokuapp.com/nextevent")
+        fetch("http://localhost:3001/nextevent")
             .then(response=>response.json())
             .then(data=>{this.setState({name: data.name, fights: data.fights, picture:data.picture, loading:false})})
+        fetch('http://localhost:3001/hasuserbet', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user:this.props.user})
+        })
+            .then(response => response.json())
+            .then(picks => {this.setState({hasBet: picks!==null, picks: picks})})
     }
-
     setSelectedList(fighter, index, beenSelected){
         let tempSelected = this.state.selectedFighters;
         if(beenSelected){
@@ -36,7 +45,6 @@ export default class BetSystem extends Component {
         }
         this.setState({selectedFighters: tempSelected})
     }
-
     isSelectedEmpty(){
         let array = this.state.selectedFighters.filter(element => element);
         return array.length === 0;
@@ -44,7 +52,6 @@ export default class BetSystem extends Component {
     showModal(){
         this.setState({showModal:true});
     }
-   
     render() {
         return (
                 this.state.loading ? <div className="centerSpinner"><Spinner animation="grow" variant="light" /></div> :
@@ -53,10 +60,19 @@ export default class BetSystem extends Component {
                         <h2>Hello, {this.props.user}! The next event is:</h2>
                         <h1 className='eventTitle'>{this.state.name}</h1>
                         <img id='eventPic' width={'30%'} height={'auto'} alt='Event poster here.' src={this.state.picture}></img>
-                        {this.isSelectedEmpty() ? <Button disabled size='lg' variant="success">Bet</Button> : 
+                        {this.state.hasBet ? 
+                        <div id='confirmed'>
+                            <Checkmark size='large'/> 
+                            <h4 id='confirmation'>You've picked:</h4>
+                            {
+                                this.state.picks.map(pick => <h5 className='pick'>{pick} </h5>)
+                            }
+                        </div>: 
+                        (this.isSelectedEmpty() ? <Button disabled size='lg' variant="success">Bet</Button> : 
                             <Animated animationIn='pulse'>
-                                <BetModal picks={this.state.selectedFighters}></BetModal>
-                            </Animated>}
+                                <BetModal user={this.props.user} eventName={this.state.name} picks={this.state.selectedFighters}></BetModal>
+                            </Animated>)
+                        }
                         <hr style={{color: 'white',height: 2, width: '30%'}}/>
                     </div>
                 {
@@ -65,6 +81,8 @@ export default class BetSystem extends Component {
                                                                             name2={fight.f2.name} 
                                                                             division={fight.division}
                                                                             selectFunction = {this.setSelectedList}
+                                                                            picture1 = {fight.f1.picture}
+                                                                            picture2 = {fight.f2.picture}
                     ></Fight>
                     })
                 }

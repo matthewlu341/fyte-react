@@ -37,18 +37,20 @@ export default class Fight extends Component {
     render() {
         return (
             <div>
-                <h2 className='line'>
-                    <h2 onClick={this.setSelected.bind(this, 'f1selected', 'f2selected', 'f2color', this.props.index, this.props.name1)} 
+                <div className='line'>
+                    <img src = {this.props.picture1} width = {'5%'} height={'auto'}></img>
+                    <h2 id='leftFighter' onClick={this.setSelected.bind(this, 'f1selected', 'f2selected', 'f2color', this.props.index, this.props.name1)} 
                     onMouseEnter={this.state.f1selected ? this.changeColorAfterSelect.bind(this, 'f1color') : this.changeColor.bind(this, 'f1color')} 
                     onMouseLeave={this.state.f1selected ? this.changeColorAfterSelect.bind(this, 'f1color') : this.changeColor.bind(this, 'f1color')}
                     style={{color: this.state.f1color}} 
-                    className='fighter'>{this.props.name1}</h2> vs <h2 
-                    onClick={this.setSelected.bind(this, 'f2selected', 'f1selected', 'f1color', this.props.index, this.props.name2)} 
+                    className='fighter'>{this.props.name1}</h2> 
+                    <h2 id='rightFighter' onClick={this.setSelected.bind(this, 'f2selected', 'f1selected', 'f1color', this.props.index, this.props.name2)} 
                     onMouseEnter={this.state.f2selected ? this.changeColorAfterSelect.bind(this, 'f2color') : this.changeColor.bind(this, 'f2color')}
                     onMouseLeave={this.state.f2selected ? this.changeColorAfterSelect.bind(this, 'f2color') : this.changeColor.bind(this, 'f2color')}
                     style={{color: this.state.f2color}} 
-                    className='fighter'>{this.props.name2}</h2> at {this.props.division} 
-                </h2>
+                    className='fighter'>{this.props.name2}</h2>
+                    <img src = {this.props.picture2} width = {'5%'} height={'auto'}></img>
+                </div>
                 <div className='spacer'></div>
             </div>
         )
