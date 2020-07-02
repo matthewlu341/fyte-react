@@ -3,6 +3,7 @@ import '../css/TachyonsLogin.css'
 import '../css/Bet.css'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
 
 export default class SignIn extends Component {
     constructor(props){
@@ -11,6 +12,7 @@ export default class SignIn extends Component {
             user: '',
             pass: '',
             error: '',
+            signUpClicked: false
         }
         this.onUserChange = this.onUserChange.bind(this);
         this.onPassChange = this.onPassChange.bind(this);
@@ -23,6 +25,7 @@ export default class SignIn extends Component {
         this.setState({pass: event.target.value})
     }
     async load(){
+        this.setState({signUpClicked:true})
         let response = await fetch('https://fyte-server.herokuapp.com/signin', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
@@ -63,7 +66,8 @@ export default class SignIn extends Component {
                     </div>
                 </form>
                 {
-                    (this.state.error ? <Alert variant = {"danger"}>{this.state.error}.</Alert> : <div></div>)
+                    (this.state.error ? <Alert variant = {"danger"}>{this.state.error}.</Alert> : 
+                    (this.state.signUpClicked ? <Spinner animation='border' variant="light"/> : <div></div>))
                 }
             </div>
         )

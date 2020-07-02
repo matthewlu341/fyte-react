@@ -7,12 +7,16 @@ const BetModal = (props) => {
     const [show, setShow] = React.useState(false);
     const handleShow = () => setShow(true);
 
-    const handleClose = () => { //When Bet is clicked
-        fetch('http://localhost:3001/placebets', {
+    const handleBet = () => { //When Bet is clicked
+        fetch('https://fyte-server.herokuapp.com/placebets', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({eventName: props.eventName, picks: props.picks.filter(element=>element), user:props.user})
-        })
+        }).then((response)=>props.hasuserBet())
+        setShow(false)
+    };
+
+    const handleClose = () => { //When Bet is clicked
         setShow(false)
     };
     return (
@@ -34,7 +38,7 @@ const BetModal = (props) => {
             <Button variant="secondary" onClick={handleClose}>
                 I'll do nootin!
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleBet}>
                 Dana, tell these guys what time it is!
             </Button>
             </Modal.Footer>

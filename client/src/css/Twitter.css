@@ -4,4 +4,8 @@
     align-items: center;
     justify-items: center;
     row-gap: 10px;
+}   
+
+#container{
+    width: 550px;
 }

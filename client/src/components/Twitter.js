@@ -34,13 +34,12 @@ export default class Twitter extends Component {
             {this.state.tweets.map((tweet) => {
                 return(
                 <Animated animationIn="fadeInLeftBig">
-                    <Tweet tweetId={tweet.id_str}></Tweet>
+                    <div id='container'>
+                        <Tweet options={{width: '550'}} tweetId={tweet.id_str}></Tweet>
+                    </div>
                 </Animated>
                 )
             })}  
-            </div>
-            
-            
-        
+        </div>  
     }
 }

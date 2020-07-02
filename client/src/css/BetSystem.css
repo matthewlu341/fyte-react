@@ -33,8 +33,22 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 #confirmation, h5.pick{
     color: white;
+    margin-left: 1.1em;
+}
+#separator{
+    margin-bottom: 10px;
+}
+#help{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+#click{
     margin-left: 1.1em;
 }
