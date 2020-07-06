@@ -10,8 +10,12 @@
     align-items: center;
     flex-direction: column;
 }
-.eventTitle{
-    margin-bottom: 1.1em;
+#event{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 15px;
 }
 .box{
     margin-top: 0;
@@ -35,6 +39,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+#pickScore{
+    color:white;
+    margin-right: 10px;
+}
 #confirmation, h5.pick{
     color: white;
     margin-left: 1.1em;
@@ -42,7 +50,7 @@
 #separator{
     margin-bottom: 10px;
 }
-#help{
+#help, #score{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,4 +59,8 @@
 }
 #click{
     margin-left: 1.1em;
+}
+.progressBar{
+    width: 10%;
+    height: auto;
 }

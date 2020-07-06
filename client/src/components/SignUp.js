@@ -41,7 +41,6 @@ export default class SignUp extends Component {
         } else{
             this.setState({error:'Username and password fields must be nonempty'})
         }
-        console.log(this.state.signUpClicked)
     }
     render() {
         return (

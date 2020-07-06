@@ -8,32 +8,59 @@ import BetModal from './BetModal'
 import {Checkmark} from 'react-checkmark';
 import { FaRegHandPointer } from 'react-icons/fa';
 import { IconContext } from "react-icons";
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default class BetSystem extends Component {
     constructor(props){
         super(props)
         this.state = {
             name: '',
+            countdown: '',
             fights: [],
             selectedFighters: [],
             picture: '',
             loading: true,
             modalOn: false,
             hasBet: null,
-            picks: []
+            picks: [],
+            correctPicks: '',
+            correct: 0,
+            total: 0
         }
         this.setSelectedList = this.setSelectedList.bind(this);
         this.isSelectedEmpty = this.isSelectedEmpty.bind(this);
         this.showModal=this.showModal.bind(this); 
         this.hasUserBet = this.hasUserBet.bind(this);  
+        this.getScore = this.getScore.bind(this);
     }
     componentWillMount(){
-        fetch("https://fyte-server.herokuapp.com/nextevent")
+        fetch("http://localhost:3001/nextevent")
             .then(response=>response.json())
-            .then(data=>{this.setState({name: data.name, fights: data.fights, picture:data.picture, loading:false})})
-        this.hasUserBet();
+            .then(data=>{this.setState({name: data.name, fights: data.fights, picture:data.picture, loading:false, countdown:data.countdown})})
+        fetch('http://localhost:3001/comparebets', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({currentDate: new Date().toDateString(), user:this.props.user})
+        })
+            .then(response=>response.json())
+            .then(data=>{this.setState({correctPicks:data})})
+            .then(()=>this.getScore())
+            .then(()=> this.hasUserBet())
+
+    }
+    getScore(){
+        console.log('getscore')
+        fetch('http://localhost:3001/getscore', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user:this.props.user})
+        })
+            .then(response=>response.json())
+            .then(data=>{this.setState({correct:data.correct, total:data.total})})
     }
     hasUserBet(){
+        console.log('hasuserbet')
         fetch('https://fyte-server.herokuapp.com/hasuserbet', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -64,8 +91,15 @@ export default class BetSystem extends Component {
                 <div className='betContainer'>
                     <div className='box'>
                         <h2>Hello, {this.props.user}! The next event is:</h2>
-                        <h1 className='eventTitle'>{this.state.name}</h1>
+
+                        <div id='event'>
+                            <h1 className='eventTitle'>{this.state.name}</h1> - 
+                            {this.state.countdown===0 ? <h3>(today)</h3> : 
+                            this.state.countdown===1 ? <h3>(tomorrow)</h3> : <h3>({this.state.countdown} days)</h3>}
+                        </div>
+
                         <img id='eventPic' width={'30%'} height={'auto'} alt='Event poster here.' src={this.state.picture}></img>
+
                         {this.state.hasBet ? 
                         <div id='confirmed'>
                             <Checkmark size='large'/> 
@@ -73,12 +107,20 @@ export default class BetSystem extends Component {
                             {
                                 this.state.picks.map(pick => <h5 className='pick'>{pick} </h5>)
                             }
-                        </div>: 
+                        </div>
+                        : 
                         (this.isSelectedEmpty() ? <Button disabled size='lg' variant="success">Bet</Button> : 
                             <Animated animationIn='pulse'>
-                                <BetModal hasuserBet ={this.hasUserBet} user={this.props.user} eventName={this.state.name} picks={this.state.selectedFighters}></BetModal>
+                                <BetModal getScore={this.getScore} hasuserBet ={this.hasUserBet} user={this.props.user} eventName={this.state.name} picks={this.state.selectedFighters}></BetModal>
                             </Animated>)
                         }
+
+                        <div id = 'score'>
+                            <h4 id='pickScore'>Your pick score:</h4>
+                            <CircularProgressbar maxValue={1} value={this.state.correct/this.state.total} 
+                            text={`${this.state.correct}/${this.state.total}`} styles={{root:{width: '15%', height: 'auto'}}} />;
+                        </div>
+
                         <hr id='separator' style={{color: 'white',height: 2, width: '30%'}}/>
                     </div>
                 {

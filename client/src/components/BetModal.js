@@ -12,7 +12,10 @@ const BetModal = (props) => {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({eventName: props.eventName, picks: props.picks.filter(element=>element), user:props.user})
-        }).then((response)=>props.hasuserBet())
+        }).then((response)=>{
+            props.getScore();
+            props.hasuserBet()
+        })
         setShow(false)
     };
 
