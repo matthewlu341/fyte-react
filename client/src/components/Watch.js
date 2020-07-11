@@ -81,7 +81,7 @@ class Watch extends Component {
     }
 
     componentWillMount(){
-        fetch('http://localhost:3001/streams', {
+        fetch('https://fyte-server.herokuapp.com/streams', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({groupNo:1090})
