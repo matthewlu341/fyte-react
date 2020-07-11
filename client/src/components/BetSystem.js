@@ -68,6 +68,7 @@ export default class BetSystem extends Component {
         })
             .then(response => response.json())
             .then(picks => {this.setState({hasBet: picks!==null, picks: picks})})
+    
     }
     setSelectedList(fighter, index, beenSelected){
         let tempSelected = this.state.selectedFighters;
@@ -91,7 +92,7 @@ export default class BetSystem extends Component {
                 <div className='betContainer'>
                     <div className='box'>
                         <h2>Hello, {this.props.user}! The next event is:</h2>
-
+                        {console.log(this.state.countdown)}
                         <div id='event'>
                             <h1 className='eventTitle'>{this.state.name}</h1> - 
                             {this.state.countdown===0 ? <h3>(today)</h3> : 
