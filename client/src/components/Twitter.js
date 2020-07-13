@@ -33,7 +33,7 @@ export default class Twitter extends Component {
             {this.state.loading ? <Spinner animation="border" role="status" variant='light'></Spinner> : <div></div>}
             {this.state.tweets.map((tweet) => {
                 return(
-                <Animated animationIn="fadeInLeftBig">
+                <Animated>
                     <div id='container'>
                         <Tweet options={{width: '550'}} tweetId={tweet.id_str}></Tweet>
                     </div>

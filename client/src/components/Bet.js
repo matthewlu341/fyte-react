@@ -26,7 +26,7 @@ export default class Bet extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Watch</Nav.Link>
+                        <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Read</Nav.Link>
                         <Nav.Link active href="#">Bet</Nav.Link>
                         <Nav.Link href="" onClick={this.props.setRoute.bind(this,'discover')}>Discover</Nav.Link>
                         </Nav>

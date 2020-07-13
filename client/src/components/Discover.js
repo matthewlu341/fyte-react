@@ -30,7 +30,7 @@ export default class Discover extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Watch</Nav.Link>
+                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Read</Nav.Link>
                             <Nav.Link href=""c onClick={this.props.setRoute.bind(this,'bet')}>Bet</Nav.Link>
                             <Nav.Link active href="">Discover</Nav.Link>
                             </Nav>
@@ -52,7 +52,7 @@ export default class Discover extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Watch</Nav.Link>
+                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Read</Nav.Link>
                             <Nav.Link href=""c onClick={this.props.setRoute.bind(this,'bet')}>Bet</Nav.Link>
                             <Nav.Link active href="">Discover</Nav.Link>
                             </Nav>
@@ -74,7 +74,7 @@ export default class Discover extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Watch</Nav.Link>
+                            <Nav.Link href="" onClick={this.props.setRoute.bind(this,'watch')}>Read</Nav.Link>
                             <Nav.Link href=""c onClick={this.props.setRoute.bind(this,'bet')}>Bet</Nav.Link>
                             <Nav.Link active href="">Discover</Nav.Link>
                             </Nav>

@@ -1,44 +1,60 @@
-h1, h3{
+h1, h3, h2,h5, h6{
     color: white;
 }
-.streams{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+#articleContainer, #articleInfo{
+    display: flex;
+    justify-content: left;
     align-items: center;
-    justify-content: center;
-    align-content: center;
-    row-gap: 30px;
-    margin-bottom: 3em;
+    flex-direction: row;
+    margin: 2em
 }
-.container, .spinnerWrap, .noContent{
+#articleContainer{
+    margin-left: 5em;
+}
+#textContent, #textandInfo{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    padding: 2em;
+}
+.dropdownContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+#thumbnail{
+    margin-right: 2em;
+}
+
+.desc{
+    margin-top: 2em;
+}
+
+article:hover{
+    text-decoration: underline;
+}
+.articleDivider{
+    color: grey;
+    background-color: grey;
+    height: 1;
+    width: 90vw
+}
+#articleInfo{
+    margin-top:0
+}
+#link{
+    text-decoration-color: white;
+}
+#link:hover{
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+.spinnerContainer{
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-.cardContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-.streamA{
-    margin-right: 1.1em;
-    padding: 10px;
-    text-decoration: none;
-    color: #212428;
-    transition: 0.2s;
-}
-.streamA:hover{
-    transform: scale(1.05);
-    text-decoration: none;
-    background-color: rgb(19, 24, 24);
-    color: white;
-}
-.noContent, .spinnerWrap{
-    margin-top: 2em;
-}
-.noStream{
-    margin-bottom: 1.1em;
 }

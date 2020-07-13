@@ -41,7 +41,7 @@ export default class YouTube extends Component {
                 <div className='load'>
                     <>{this.state.loading ? <Spinner animation="border" role="status" variant='light'></Spinner> : <div></div>}</>
                 </div>
-                <Animated animationIn='fadeInLeft'>
+                <Animated>
                     <div class='videos'>
                             <iframe className='primary' title='0' width="70%" height="576" src={this.state.videos[0]} frameBorder="0" allow="accelerometer; autoplay; 
                             encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

@@ -42,9 +42,7 @@ a, a:hover{
     text-decoration: none;
     transition: 0.2s
 }
-a:hover{
-    transform: scale(1.1)
-}
+
 .secondary{
     display: flex;
     justify-content: center;

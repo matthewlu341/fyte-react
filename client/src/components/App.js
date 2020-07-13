@@ -43,7 +43,7 @@ class App extends React.Component{
           </Animated>
           <Animated animationIn="fadeInUpBig">
             <ul className="nav">
-              <li><button className = 'link' onClick={this.setRoute.bind(this,"watch")}>Watch.</button></li>
+              <li><button className = 'link' onClick={this.setRoute.bind(this,"watch")}>Read.</button></li>
               <li><button className = 'link' onClick={this.setRoute.bind(this, "bet")}>Bet.</button></li>
               <li><button className = 'link' onClick={this.setRoute.bind(this, "discover")}>Discover.</button></li>
             </ul>

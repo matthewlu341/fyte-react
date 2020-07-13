@@ -50,7 +50,6 @@ export default class BetSystem extends Component {
 
     }
     getScore(){
-        console.log('getscore')
         fetch('https://fyte-server.herokuapp.com/getscore', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -60,7 +59,6 @@ export default class BetSystem extends Component {
             .then(data=>{this.setState({correct:data.correct, total:data.total})})
     }
     hasUserBet(){
-        console.log('hasuserbet')
         fetch('https://fyte-server.herokuapp.com/hasuserbet', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

@@ -46,7 +46,7 @@ export default class Instagram extends Component {
                                     if (type === 'video') {
                                         return (
                                         <div className='post'>
-                                            <Animated animationIn='fadeInLeft'>
+                                            <Animated>
                                                 <video width="320" height="auto" poster={display_url} controls>
                                                     <source src={video_url} type="video/mp4" />
                                                 </video>
@@ -76,7 +76,7 @@ export default class Instagram extends Component {
                                     }
                                     return (
                                         <div className='post'>
-                                            <Animated animationIn='fadeInLeft'>
+                                            <Animated>
                                                 <img width="320" height="auto" src={display_url} alt={caption}/>
                                                 <h6>{pic.caption}</h6>
                                                 <div className= 'info'>
