@@ -16,7 +16,7 @@ export default class YouTube extends Component {
     }
 
     async componentDidMount(){  
-        let data = await fetch("https://fyte-server.herokuapp.com/youtube"),
+        let data = await fetch("https://fyte-server.onrender.com/youtube"),
         vids = await data.json(),
         retVids = [];
         for (let vid of vids){

@@ -8,7 +8,7 @@ const BetModal = (props) => {
     const handleShow = () => setShow(true);
 
     const handleBet = () => { //When Bet is clicked
-        fetch('https://fyte-server.herokuapp.com/placebets', {
+        fetch('https://fyte-server.onrender.com/placebets', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({eventName: props.eventName, picks: props.picks.filter(element=>element), user:props.user})

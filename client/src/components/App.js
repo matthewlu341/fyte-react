@@ -15,7 +15,7 @@ class App extends React.Component{
     this.setRoute = this.setRoute.bind(this);
   }
   componentWillMount(){
-    fetch('https://fyte-server.herokuapp.com/', {
+    fetch('https://fyte-server.onrender.com', {
             method: 'get',
             headers: {'Accept': 'application/json'},
         })

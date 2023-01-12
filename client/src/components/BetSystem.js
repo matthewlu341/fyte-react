@@ -35,10 +35,10 @@ export default class BetSystem extends Component {
         this.getScore = this.getScore.bind(this);
     }
     componentWillMount(){
-        fetch("https://fyte-server.herokuapp.com/nextevent")
+        fetch("https://fyte-server.onrender.com/nextevent")
             .then(response=>response.json())
             .then(data=>{this.setState({name: data.name, fights: data.fights, picture:data.picture, loading:false, countdown:data.countdown})})
-        fetch('https://fyte-server.herokuapp.com/comparebets', {
+        fetch('https://fyte-server.onrender.com/comparebets', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({currentDate: new Date().toDateString(), user:this.props.user})
@@ -50,7 +50,7 @@ export default class BetSystem extends Component {
 
     }
     getScore(){
-        fetch('https://fyte-server.herokuapp.com/getscore', {
+        fetch('https://fyte-server.onrender.com/getscore', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({user:this.props.user})
@@ -59,7 +59,7 @@ export default class BetSystem extends Component {
             .then(data=>{this.setState({correct:data.correct, total:data.total})})
     }
     hasUserBet(){
-        fetch('https://fyte-server.herokuapp.com/hasuserbet', {
+        fetch('https://fyte-server.onrender.com/hasuserbet', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({user:this.props.user})

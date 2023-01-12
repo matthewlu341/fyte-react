@@ -25,7 +25,7 @@ class Watch extends Component {
 
     getArticles(sortArg){
         this.setState({loading:true})
-        fetch('https://fyte-server.herokuapp.com/news', {
+        fetch('https://fyte-server.onrender.com/news', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({sortArg: sortArg})

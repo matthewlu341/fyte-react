@@ -26,7 +26,7 @@ export default class SignIn extends Component {
     }
     async load(){
         this.setState({signUpClicked:true})
-        let response = await fetch('https://fyte-server.herokuapp.com/signin', {
+        let response = await fetch('https://fyte-server.onrender.com/signin', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({user: this.state.user, pass: this.state.pass})

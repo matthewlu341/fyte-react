@@ -27,7 +27,7 @@ export default class SignUp extends Component {
     async signUp(){
         this.setState({signUpClicked:true})
         if(this.state.user && this.state.pass){
-            let response = await fetch('https://fyte-server.herokuapp.com/signup', {
+            let response = await fetch('https://fyte-server.onrender.com/signup', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({user: this.state.user, pass: this.state.pass})
